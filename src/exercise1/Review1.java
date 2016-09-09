@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Review1 {
 
 	public static void main(String[] args) {
+		
 		Scanner scanner = new Scanner(System.in);
 
 		System.out.print("Please enter a Postal Code: ");
@@ -20,5 +21,6 @@ public class Review1 {
 		System.out.println("The sum of all the digits in the Postal Code is " + sum + ".");
 
 		scanner.close();
+		
 	}
 }
