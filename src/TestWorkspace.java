@@ -4,9 +4,32 @@ import java.util.List;
 
 public class TestWorkspace {
 
+	public static class Student {
+
+		private String name;
+		private int grade;
+
+		public Student(String name, int grade) {
+			this.name = name;
+			this.grade = grade;
+		}
+
+		public String getName() {
+			return this.name;
+		}
+
+		public int getGrade() {
+			return this.grade;
+		}
+
+	}
+
 	public static void main(String[] args) throws Exception {
-		List<String> list = new ArrayList<String>();
-		list.addAll(Arrays.asList("a", "c", "b"));
-		list.stream().forEach(name -> System.out.println(name));
+		List<Student> list = new ArrayList<Student>();
+		list.addAll(Arrays.asList(new Student("Charles", 12), new Student("Daniel", 11)));
+		list.stream()
+			.filter(student -> student.getGrade() == 12)
+			.distinct()
+			.forEach(student -> System.out.println(student.getName() + ", " + student.getGrade()));
 	}
 }
