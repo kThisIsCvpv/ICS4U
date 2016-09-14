@@ -49,25 +49,29 @@ public class Sorting3 {
 			}
 		}
 
+		br.close();
+
 		List<Entry> count = new ArrayList<Entry>();
 		for (int i = 0; i < appearance.length; i++) {
 			char reference = (char) (i + 65);
 			count.add(new Entry(reference, appearance[i]));
 		}
 
-		Collections.sort(count, new Comparator<Entry>() {
+		Comparator<Entry> compare = new Comparator<Entry>() {
 			public int compare(Entry o1, Entry o2) {
 				return Integer.compare(o1.count, o2.count) * -1;
 			}
-		});
+		};
+
+//		count.stream().sorted(compare).forEach(entry -> System.out.println(entry.character + " appears " + entry.count + " different times."));
+
+		Collections.sort(count, compare);
 
 		for (Entry entry : count) {
 			double prob = ((double) entry.count) / totalCharacters * 1000d;
 			prob = Math.round(prob) / 10d;
 			System.out.println(entry.character + " appears " + entry.count + " different times (" + prob + "%).");
 		}
-
-		br.close();
 
 	}
 
